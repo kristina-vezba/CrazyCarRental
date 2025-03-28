@@ -1,0 +1,57 @@
+﻿@model CrazyCarRental.Models.Car
+
+@{
+	ViewData["Title"] = $"{Model.Make} {Model.Model} Details";
+}
+
+<h1>@Model.Make @Model.Model</h1>
+
+<div class="car-details">
+	<img src="~/images/cars/@Model.ImageUrl" alt="@Model.Make @Model.Model" style="max-width: 100%; height: auto;" />
+
+	<p><strong>Price per Day:</strong> @Model.PricePerDay €</p>
+	<p><strong>Availability:</strong> @(Model.IsAvailable ? "Available" : "Currently Unavailable")</p>
+
+	<h3>Specifications</h3>
+	<ul>
+		<li><strong>Make:</strong> @Model.Make</li>
+		<li><strong>Model:</strong> @Model.Model</li>
+		<li><strong>Year:</strong> @Model.Year</li>
+		<li><strong>Fuel Type:</strong> @Model.FuelType</li>
+		<li><strong>Seats:</strong> @Model.Seats</li>
+	</ul>
+
+	@if (Model.IsAvailable)
+	{
+		<form asp-action="Create" asp-controller="Booking" method="get">
+			<input type="hidden" name="CarId" value="@Model.CarId" />
+			<input type="hidden" name="UserId" value="1" />
+			<button type="submit" class="btn btn-primary">Book This Car</button>
+		</form>
+	}
+	else
+	{
+		<p>This car is currently unavailable for booking.</p>
+	}
+
+	<div id="map" style="height: 400px; width: 100%;"></div>
+</div>
+
+<style>
+	.car-details {
+		margin-top: 20px;
+	}
+
+	.btn {
+		background-color: #007bff;
+		color: white;
+		padding: 10px 20px;
+		border: none;
+		border-radius: 5px;
+		cursor: pointer;
+	}
+
+	.btn-primary:hover {
+		background-color: #0056b3;
+	}
+</style>
