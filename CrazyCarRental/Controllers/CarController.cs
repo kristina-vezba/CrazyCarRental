@@ -1,11 +1,11 @@
 ﻿using CrazyCarRental.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace CrazyCarRental.Controllers
 {
 	public class CarController : Controller
 	{
-
 		public IActionResult Index()
 		{
 			var cars = InitCars();
@@ -52,6 +52,41 @@ namespace CrazyCarRental.Controllers
 
 		//	return View(cars);
 		//}
+
+		#region Linq vezba
+		//public IActionResult Index(string make, string model, decimal? minPrice, decimal? maxPrice)
+		//{
+		//	IEnumerable<Car> cars = InitCars();
+
+		//	// query
+		//	var expensiveCars = from p in cars
+		//						where p.PricePerDay > 300
+		//						select p;
+
+		//	//var expensiveCars2 = cars.Where(p => p.PricePerDay > 300);
+		//	//return View(expensiveCars2);
+
+		//	// projection
+		//	IEnumerable<string> names = cars.Select(x => x.Make + " " + x.Model);
+		//	IEnumerable<string> names2 = cars.Where(p => p.PricePerDay < 350).Select(x => x.Make + " " + x.Model);
+
+		//	// ordering
+		//	var cheaCars = cars.Where(p => p.PricePerDay < 350).OrderBy(r => r.PricePerDay);
+		//	var cheaCars2 = cars.Where(p => p.PricePerDay < 350).OrderByDescending(r => r.PricePerDay);
+
+		//	// first/single
+		//	Car car = cars.FirstOrDefault(x => x.Year < 2000);
+		//	Car car2 = cars.Single(x => x.Year < 1980);
+
+		//	// count
+		//	int expCars = cars.Count(p => p.PricePerDay > 300);
+
+		//	// grouping
+		//	var carGroups = cars.GroupBy(p => p.PricePerDay > 300 ? "Expensive" : "Affordable");
+
+		//	return View(expensiveCars);
+		//}
+		#endregion
 
 		private IEnumerable<Car> InitCars()
 		{

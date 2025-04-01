@@ -6,7 +6,7 @@
 
 <h1>Available Cars</h1>
 
-<div class="my-5">
+@* <div class="my-5">
 	<form asp-action="Index" method="get">
 		<label for="make">Make:</label>
 		<input type="text" name="make" id="make" value="@Context.Request.Query["make"]" placeholder="Search by Make" />
@@ -22,7 +22,7 @@
  
 		<button type="submit" class="search-button">Search</button>
 	 </form>
- </div>
+ </div> *@
 
 <div>
 	 @foreach(var car in Model)
